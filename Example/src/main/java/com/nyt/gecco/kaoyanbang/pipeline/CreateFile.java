@@ -8,6 +8,8 @@ import org.apache.http.util.TextUtils;
 
 import java.io.File;
 
+import static com.nyt.gecco.test.CreateFile.filePaths;
+
 /**
  * Created by nieyutan on 17/5/8.
  */
@@ -16,28 +18,29 @@ public class CreateFile implements Pipeline<DocList> {
 
 
     @Override
-    public void process(DocList docList) {
+    public void process(DocList unName) {
         //针对大学的
-        //一级分类
-        String firstCategory = docList.getFilePath();
+        //一级分类  北京
+        String firstCategory = unName.getFilePath();
+
         if (!TextUtils.isEmpty(firstCategory)) {
+
             String path = "/Users/nieyutan/Documents/爬虫/考研帮/" + firstCategory;
-            System.out.println(path);
             File file = new File(path);
             if (!file.exists()) {
                 file.mkdir();
             }
-            //二级分类
-            for (UnversityDetail uname : docList.getUnName()) {
+            //大学二级分类
+            for (UnversityDetail uname : unName.getUnName()) {
                 if (!TextUtils.isEmpty(uname.getDocName())) {
                     File unNameFile = new File(path + "/" + uname.getDocName());
                     if (!unNameFile.exists()) {
                         unNameFile.mkdir();
+                        filePaths.add(unNameFile.getPath());
                     }
                 }
 
             }
         }
-
     }
 }

@@ -8,6 +8,8 @@ import com.nyt.gecco.test.Download;
 
 import java.net.URLDecoder;
 
+import static com.nyt.gecco.test.CreateFile.filePaths;
+
 /**
  * Created by nieyutan on 17/5/4.
  */
@@ -21,27 +23,23 @@ public class DownloadPipeline implements Pipeline<Download> {
     private String fileSavePath="/Users/nieyutan/Documents/爬虫/Demo/Example/file/";
 
     private Executors executors = Executors.create();
-
+    private String localPath;
     @Override
     public void process(Download bean) {
-//        pic.setPicinfo(bean.getCode());
-        int lastIndex = bean.getDocLastUrl().lastIndexOf(".");
-
-        String substring = bean.getDocLastUrl().substring(lastIndex, bean.getDocLastUrl().length());
-
         String decode = URLDecoder.decode(bean.getDocLastUrl());
-        int i = decode.lastIndexOf("/");
-        String docName = decode.substring(i, decode.length());
-
-//        System.out.println("地址1:"+decode);
-
-
+        int index = decode.lastIndexOf("/");
+        String docName = decode.substring(index, decode.length());
         //文件的后缀名 有时候是pdf有时候的rar
+        for (int i = 0; i < filePaths.size(); i++) {
+            int d = filePaths.get(i).lastIndexOf("/");
+            String substring = filePaths.get(i).substring(d, filePaths.get(i).length());
+//            System.out.println(docName+"----"+substring);
+            if(docName.contains(substring)){
 
-        String localPath = fileSavePath + docName;
-//        System.out.println("地址2:"+localPath);
-
-        executors.getDefaultActionQueue().enqueue(
-                new DownloadAction(executors.getDefaultActionQueue(), bean.getDocLastUrl(), localPath));
+                localPath = filePaths.get(i)+"/" + docName;
+                executors.getDefaultActionQueue().enqueue(
+                        new DownloadAction(executors.getDefaultActionQueue(), bean.getDocLastUrl(), localPath));
+            }
+        }
     }
 }

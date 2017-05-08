@@ -112,29 +112,29 @@ public class DocList implements HtmlBean{
 
     //如果是大学的一级文件目录
     @HtmlField(cssPath = "body > div > div.mainbox.forumlist > h3")
-    private String filePath;
+    private String fileFirstPath;
 
 
-    //二级目录 北京大学  或者政治
+    //二级目录 北京大学
     @HtmlField(cssPath = "#infosidemain > div > h3")
-    private String fileClassPath;
+    private String fileSecondPath;
 
 
     public String getFileClassPath() {
-        return fileClassPath;
+        return fileSecondPath;
     }
 
     public void setFileClassPath(String fileClassPath) {
-        this.fileClassPath = fileClassPath;
+        this.fileSecondPath = fileClassPath;
     }
 
 
     public String getFilePath() {
-        return filePath;
+        return fileFirstPath;
     }
 
     public void setFilePath(String filePath) {
-        this.filePath = filePath;
+        this.fileFirstPath = filePath;
     }
 //    public String getUnCategory() {
 //        return unCategory;
