@@ -8,7 +8,6 @@ import com.nyt.gecco.test.Download;
 
 import java.net.URLDecoder;
 
-import static com.nyt.gecco.test.CreateFile.filePaths;
 
 /**
  * Created by nieyutan on 17/5/4.
@@ -30,13 +29,13 @@ public class DownloadPipeline implements Pipeline<Download> {
         int index = decode.lastIndexOf("/");
         String docName = decode.substring(index, decode.length());
         //文件的后缀名 有时候是pdf有时候的rar
-        for (int i = 0; i < filePaths.size(); i++) {
-            int d = filePaths.get(i).lastIndexOf("/");
-            String substring = filePaths.get(i).substring(d, filePaths.get(i).length());
+        for (int i = 0; i < CreateFile.filePaths.size(); i++) {
+            int d =  CreateFile.filePaths.get(i).lastIndexOf("/");
+            String substring =  CreateFile.filePaths.get(i).substring(d,  CreateFile.filePaths.get(i).length());
 //            System.out.println(docName+"----"+substring);
             if(docName.contains(substring)){
 
-                localPath = filePaths.get(i)+"/" + docName;
+                localPath =  CreateFile.filePaths.get(i)+"/" + docName;
                 executors.getDefaultActionQueue().enqueue(
                         new DownloadAction(executors.getDefaultActionQueue(), bean.getDocLastUrl(), localPath));
             }

@@ -2,9 +2,7 @@ package com.nyt.gecco.test;
 
 import com.geccocrawler.gecco.annotation.Href;
 import com.geccocrawler.gecco.annotation.HtmlField;
-import com.geccocrawler.gecco.annotation.Request;
 import com.geccocrawler.gecco.annotation.Text;
-import com.geccocrawler.gecco.request.HttpRequest;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 /**
@@ -12,19 +10,11 @@ import com.geccocrawler.gecco.spider.HtmlBean;
  */
 public class UnNameDetail implements HtmlBean {
 
-    public HttpRequest getRequest() {
-        return request;
-    }
 
-    public void setRequest(HttpRequest request) {
-        this.request = request;
-    }
 
     /**
      * 获取请求对象，从该对象中可以获取抓取的是哪个url
      */
-    @Request
-    private HttpRequest request;
 
     /**
      * 大学名称

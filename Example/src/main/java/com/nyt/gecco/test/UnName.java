@@ -1,7 +1,9 @@
 package com.nyt.gecco.test;
 
-import com.geccocrawler.gecco.annotation.*;
-import com.geccocrawler.gecco.request.HttpRequest;
+import com.geccocrawler.gecco.annotation.Gecco;
+import com.geccocrawler.gecco.annotation.Href;
+import com.geccocrawler.gecco.annotation.HtmlField;
+import com.geccocrawler.gecco.annotation.Text;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 import java.util.List;
@@ -20,17 +22,9 @@ public class UnName implements HtmlBean {
     @HtmlField(cssPath = "#forum_85 > tbody > tr > th")
     private List<TypeDetail> typeDetails;
 
-    /**
-     * 获取请求对象，从该对象中可以获取抓取的是哪个url
-     */
-    @Request
-    private HttpRequest request;
     //文档详细内容
     @HtmlField(cssPath = "#hotclass > tbody > tr > th")
     private List<UnNameDetail> docName;
-    public HttpRequest getRequest() {
-        return request;
-    }
 
     public List<TypeDetail>  getTypeDetails() {
         return typeDetails;
@@ -43,9 +37,6 @@ public class UnName implements HtmlBean {
 
 
 
-    public void setRequest(HttpRequest request) {
-        this.request = request;
-    }
 
 
     public List<UnNameDetail>  getDocName() {
@@ -80,10 +71,6 @@ public class UnName implements HtmlBean {
     private String fileFirstPath;
 
 
-    //二级目录  北京大学
-    @Text
-    @HtmlField(cssPath = "#infosidemain > div > h3")
-    private String fileSecondPath;
 
     public String getFileFirstPath() {
         return fileFirstPath;
@@ -93,13 +80,6 @@ public class UnName implements HtmlBean {
         this.fileFirstPath = fileFirstPath;
     }
 
-    public String getFileSecondPath() {
-        return fileSecondPath;
-    }
-
-    public void setFileSecondPath(String fileSecondPath) {
-        this.fileSecondPath = fileSecondPath;
-    }
 
     //
     //文档地址
