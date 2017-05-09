@@ -10,7 +10,7 @@ import com.geccocrawler.gecco.spider.HtmlBean;
 /**
  * Created by nieyutan on 17/5/3.
  */
-public class UnNameDetail implements HtmlBean{
+public class UnNameDetail implements HtmlBean {
 
     public HttpRequest getRequest() {
         return request;
@@ -27,23 +27,23 @@ public class UnNameDetail implements HtmlBean{
     private HttpRequest request;
 
     /**
-     * 文档名称
+     * 大学名称
      */
     @Text
-    @HtmlField(cssPath ="  h2 > a" )
-    private String  docName;
+    @HtmlField(cssPath = "  h2 > a")
+    private String docName;
     /**
      * 地址
      */
     @Href(click = true)
-    @HtmlField(cssPath =" h2 > a" )
-    private String  docUrl;
+    @HtmlField(cssPath = " h2 > a")
+    private String docUrl;
     /**
-     *每个分类下有多少数量的资料  例如 "1234份资料"
+     * 每个分类下有多少数量的资料  例如 "1234份资料"
      */
     @Text
     @HtmlField(cssPath = " p")
-    private String  docNum;
+    private String docNum;
 
     public String getDocNum() {
         return docNum;
@@ -62,8 +62,6 @@ public class UnNameDetail implements HtmlBean{
     }
 
 
-
-
     public String getDocName() {
         return docName;
     }
@@ -71,5 +69,8 @@ public class UnNameDetail implements HtmlBean{
     public void setDocName(String docName) {
         this.docName = docName;
     }
+
+
+
 
 }

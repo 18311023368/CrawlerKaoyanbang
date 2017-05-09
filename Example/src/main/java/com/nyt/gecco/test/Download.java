@@ -8,7 +8,7 @@ import com.geccocrawler.gecco.spider.HtmlBean;
 /**
  * Created by nieyutan on 17/5/8.
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/{download}.html" ,pipelines = { "","downloadPipeline"})
+@Gecco(matchUrl = "http://download.kaoyan.com/{download}.html" ,pipelines = { "consolePipeline",""})
 public class Download implements HtmlBean{
     @Attr(value = "action")
     @HtmlField(cssPath = "#downLoad")

@@ -29,13 +29,12 @@ public class DownloadPipeline implements Pipeline<Download> {
         String decode = URLDecoder.decode(bean.getDocLastUrl());
         int index = decode.lastIndexOf("/");
         String docName = decode.substring(index, decode.length());
-        //文件的后缀名 有时候是pdf有时候的rar
+
         for (int i = 0; i < filePaths.size(); i++) {
             int d = filePaths.get(i).lastIndexOf("/");
             String substring = filePaths.get(i).substring(d, filePaths.get(i).length());
             System.out.println(docName+"----"+substring);
             if(docName.contains(substring)){
-
                  localPath = filePaths.get(i)+"/" + docName;
                 executors.getDefaultActionQueue().enqueue(
                         new DownloadAction(executors.getDefaultActionQueue(), bean.getDocLastUrl(), localPath));

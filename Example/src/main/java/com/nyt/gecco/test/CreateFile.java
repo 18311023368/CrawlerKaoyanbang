@@ -18,7 +18,7 @@ public static List<String> filePaths=new ArrayList<String>();
     @Override
     public void process(UnName unName) {
         //一级分类  北京
-        String firstCategory = unName.getFilePath();
+        String firstCategory = unName.getFileFirstPath();
 
         if (!TextUtils.isEmpty(firstCategory)) {
 

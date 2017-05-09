@@ -21,7 +21,7 @@ public class CreateFile implements Pipeline<DocList> {
     public void process(DocList unName) {
         //针对大学的
         //一级分类  北京
-        String firstCategory = unName.getFilePath();
+        String firstCategory = unName.getFileFirstPath();
 
         if (!TextUtils.isEmpty(firstCategory)) {
 

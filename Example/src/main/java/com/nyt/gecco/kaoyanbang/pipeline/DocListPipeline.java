@@ -10,7 +10,7 @@ import org.apache.http.util.TextUtils;
 /**
  * Created by nieyutan on 17/5/2.
  * 读取下一页
- */
+// */
 @PipelineName("docListPipeline")
 public class DocListPipeline implements Pipeline<DocList> {
 

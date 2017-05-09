@@ -39,15 +39,7 @@ public class DocDetail implements HtmlBean{
     private String docNameUrl;
 
 
-    /**
-     * 大学名称,大学名称的话还得继续往下走
-     */
-    @Text
-    @HtmlField(cssPath ="  h2 > a" )
-    private String universityName;
-    @Href(click =  true)
-    @HtmlField(cssPath ="  h2 > a" )
-    private String universityNameUrl;
+
 
 
 
@@ -59,13 +51,6 @@ public class DocDetail implements HtmlBean{
         this.docName = docName;
     }
 
-    public String getUniversityName() {
-        return universityName;
-    }
-
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName;
-    }
 
     public String getDocNameUrl() {
         return docNameUrl;
@@ -75,54 +60,6 @@ public class DocDetail implements HtmlBean{
         this.docNameUrl = docNameUrl;
     }
 
-    public String getUniversityNameUrl() {
-        return universityNameUrl;
-    }
-
-    public void setUniversityNameUrl(String universityNameUrl) {
-        this.universityNameUrl = universityNameUrl;
-    }
 
 
-/************文档倒数第二级************/
-    //文档下级地址
-    @Href
-    @HtmlField(cssPath = "td > div.postmessage.defaultpost > div.box.postattachlist > dl > dt > a")
-    private String docLastUrl;
-    //文档名称
-    @Text
-    @HtmlField(cssPath = "td > div.postmessage.defaultpost > div.box.postattachlist > dl > dt > a")
-    private String  docLastName;
-
-    public String getDocLastName() {
-        return docLastName;
-    }
-
-    public void setDocLastName(String docLastName) {
-        this.docLastName = docLastName;
-    }
-
-    public String getDocLastUrl() {
-        return docLastUrl;
-    }
-
-    public void setDocLastUrl(String docLastUrl) {
-        this.docLastUrl = docLastUrl;
-    }
-
-
-    /**************文档最终的下载地址*****************/
-
-    @Attr(value = "action")
-    @HtmlField(cssPath = "#downLoad")
-    private  String  downLoadLurl;
-
-
-    public String getDownLoadLurl() {
-        return downLoadLurl;
-    }
-
-    public void setDownLoadLurl(String downLoadLurl) {
-        this.downLoadLurl = downLoadLurl;
-    }
 }

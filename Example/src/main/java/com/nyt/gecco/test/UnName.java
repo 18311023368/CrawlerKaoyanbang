@@ -20,7 +20,17 @@ public class UnName implements HtmlBean {
     @HtmlField(cssPath = "#forum_85 > tbody > tr > th")
     private List<TypeDetail> typeDetails;
 
-
+    /**
+     * 获取请求对象，从该对象中可以获取抓取的是哪个url
+     */
+    @Request
+    private HttpRequest request;
+    //文档详细内容
+    @HtmlField(cssPath = "#hotclass > tbody > tr > th")
+    private List<UnNameDetail> docName;
+    public HttpRequest getRequest() {
+        return request;
+    }
 
     public List<TypeDetail>  getTypeDetails() {
         return typeDetails;
@@ -30,17 +40,7 @@ public class UnName implements HtmlBean {
         this.typeDetails = docName;
     }
 
-    /**
-     * 获取请求对象，从该对象中可以获取抓取的是哪个url
-     */
-    @Request
-    private HttpRequest request;
-    //文档详细内容
-    @HtmlField(cssPath = "#hotclass > tbody > tr> th")
-    private List<UnNameDetail> docName;
-    public HttpRequest getRequest() {
-        return request;
-    }
+
 
 
     public void setRequest(HttpRequest request) {
@@ -75,38 +75,33 @@ public class UnName implements HtmlBean {
 //        this.fileCategory = fileCategory;
 //    }
     //如果是大学的一级文件目录  例如北京
-    @HtmlField(cssPath = "body > div > div.mainbox.forumlist > h3")
+    @Text
+    @HtmlField(cssPath = " body > div> div > h3")
     private String fileFirstPath;
 
 
     //二级目录  北京大学
+    @Text
     @HtmlField(cssPath = "#infosidemain > div > h3")
     private String fileSecondPath;
 
-
-    public String getFileClassPath() {
+    public String getFileFirstPath() {
         return fileFirstPath;
     }
 
-    public void setFileClassPath(String fileClassPath) {
-        this.fileFirstPath = fileClassPath;
+    public void setFileFirstPath(String fileFirstPath) {
+        this.fileFirstPath = fileFirstPath;
     }
 
-
-    public String getFilePath() {
+    public String getFileSecondPath() {
         return fileSecondPath;
     }
 
-    public void setFilePath(String filePath) {
-        this.fileSecondPath = filePath;
+    public void setFileSecondPath(String fileSecondPath) {
+        this.fileSecondPath = fileSecondPath;
     }
 
-
-
-
-
-
-
+    //
     //文档地址
     @Href(click = true)
     @HtmlField(cssPath = "td > div.postmessage.defaultpost > div.box.postattachlist > dl > dt > a")

@@ -24,7 +24,7 @@ public class PubMedEngine {
                 //单个爬虫每次抓取完一个请求后的间隔时间
                 .interval(2000)
                 //循环抓取
-                .loop(true)
+                .loop(false)
                 //使用pc端userAgent
                 .mobile(false)
                 //开始运行

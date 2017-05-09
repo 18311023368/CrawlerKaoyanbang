@@ -10,7 +10,7 @@ import java.util.List;
  * Created by nieyutan on 17/4/28.
  * 每个分类下子分类,如果是省市的话还会有下级列表DocListSon,如果 是科目的直接就是文档列表
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","docListPipeline",""})
+@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","docListPipeline","createFile"})
 public class DocList implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;
@@ -101,59 +101,34 @@ public class DocList implements HtmlBean{
     }
 
     /**************************/
-//    //科目下的分类
-//    @Text
-//    @HtmlField(cssPath = "#nav > div > span > a:nth-child(3)")
-//    private String fileCategory;
-//    //大学下的分类
-//    @Text
-//    @HtmlField(cssPath = "#nav > div > span > a:nth-child(4)")
-//    private String unCategory;
-
-    //如果是大学的一级文件目录
-    @HtmlField(cssPath = "body > div > div.mainbox.forumlist > h3")
+    //如果是大学的一级文件目录  例如北京
+    @Text
+    @HtmlField(cssPath = " body > div> div > h3")
     private String fileFirstPath;
 
 
-    //二级目录 北京大学
+    //二级目录  北京大学
+    @Text
     @HtmlField(cssPath = "#infosidemain > div > h3")
     private String fileSecondPath;
 
-
-    public String getFileClassPath() {
-        return fileSecondPath;
-    }
-
-    public void setFileClassPath(String fileClassPath) {
-        this.fileSecondPath = fileClassPath;
-    }
-
-
-    public String getFilePath() {
+    public String getFileFirstPath() {
         return fileFirstPath;
     }
 
-    public void setFilePath(String filePath) {
-        this.fileFirstPath = filePath;
+    public void setFileFirstPath(String fileFirstPath) {
+        this.fileFirstPath = fileFirstPath;
     }
-//    public String getUnCategory() {
-//        return unCategory;
-//    }
-//
-//    public void setUnCategory(String unCategory) {
-//        this.unCategory = unCategory;
-//    }
-//
-//    public String getFileCategory() {
-//        return fileCategory;
-//    }
-//
-//    public void setFileCategory(String fileCategory) {
-//        this.fileCategory = fileCategory;
-//    }
 
+    public String getFileSecondPath() {
+        return fileSecondPath;
+    }
 
+    public void setFileSecondPath(String fileSecondPath) {
+        this.fileSecondPath = fileSecondPath;
+    }
 
+    //
     //文档地址
     @Href(click = true)
     @HtmlField(cssPath = "td > div.postmessage.defaultpost > div.box.postattachlist > dl > dt > a")
@@ -179,6 +154,7 @@ public class DocList implements HtmlBean{
     public void setDocTwoUrl(String docUrl) {
         this.docTwoUrl = docUrl;
     }
+
 
 
 

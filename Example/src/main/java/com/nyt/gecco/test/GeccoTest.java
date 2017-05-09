@@ -13,7 +13,7 @@ import java.util.List;
  * ma
  * Created by nieyutan on 17/4/18.
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={""})
+@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={"consolePipeline"})
 public class GeccoTest  implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;
