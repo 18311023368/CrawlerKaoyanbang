@@ -1,7 +1,6 @@
 package com.nyt.gecco.test;
 
 import com.geccocrawler.gecco.GeccoEngine;
-import com.geccocrawler.gecco.annotation.Gecco;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
@@ -11,13 +10,13 @@ import java.util.List;
  * ma
  * Created by nieyutan on 17/4/18.
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={"consolePipeline"})
+//@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={""})
 public class GeccoTest  implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;
 
     //分类集合
-    @HtmlField(cssPath = "#hotclass > tbody > tr > th ")
+    @HtmlField(cssPath = "#hotclass > tbody > tr:nth-child(5) > th:nth-child(5)")
     private List<Type> typeList;
 
 

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by nieyutan on 17/4/28.
  * 每个分类下子分类,如果是省市的话还会有下级列表DocListSon,如果 是科目的直接就是文档列表
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","docListPipeline","createFile"})
+@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","","createFile"})
 public class DocList implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;
@@ -34,14 +34,14 @@ public class DocList implements HtmlBean{
     @Request
     private HttpRequest request;
     //文档详细
-    @HtmlField(cssPath = "#forum_85 > tbody >tr > th")
+    @HtmlField(cssPath = "#forum_85 > tbody >tr:nth-child(5) > th")
     private List<DocDetail> docName;
 
 
     /**
      * 大学详细名称
      */
-    @HtmlField(cssPath = "#hotclass > tbody > tr > th ")
+    @HtmlField(cssPath = "#hotclass > tbody > tr:nth-child(1) > th :nth-child(1)")
     private List<UnversityDetail> unName;
 
 //    @HtmlField(cssPath = " h2 > a")

@@ -1,10 +1,15 @@
 package com.nyt.gecco.kaoyanbang.exec;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 
 /**
  * Created by Administrator on 2017/4/9/009.
@@ -13,40 +18,41 @@ public class DownloadAction extends Action {
 
     private String url;
     private String localPath;
+    private CloseableHttpClient httpClient;
+
+    {
+        RequestConfig clientConfig = RequestConfig.custom()
+                .setRedirectsEnabled(false).build();
+        PoolingHttpClientConnectionManager syncConnectionManager = new PoolingHttpClientConnectionManager();
+        syncConnectionManager.setMaxTotal(1000);
+        syncConnectionManager.setDefaultMaxPerRoute(50);
+        httpClient = HttpClientBuilder.create()
+                .setDefaultRequestConfig(clientConfig)
+                .setConnectionManager(syncConnectionManager).build();
+    }
 
     public DownloadAction(ActionQueue queue, String url, String localPath) {
         super(queue);
         this.url = url;
-        this.localPath = localPath;
+        this.localPath = localPath + System.currentTimeMillis() + ".jpg";
     }
 
     @Override
     protected void execute() {
+        HttpRequestBase request = new HttpGet(url);
         try {
-            URL realUrl = new URL(this.url);
-            // 打开和URL之间的连接
-            URLConnection connection = realUrl.openConnection();
-            // 设置通用的请求属性
-            connection.setRequestProperty("accept", "*/*");
-            connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            // 建立实际的连接
-            connection.connect();
-            // 定义 BufferedReader输入流来读取URL的响应
-            InputStream in = connection.getInputStream();
-            OutputStream out = new FileOutputStream(this.localPath);
-            int length;
-            byte[] bytes = new byte[2046];
-            while ((length = in.read(bytes)) != -1){
-                out.write(bytes,0,length);
-                out.flush();
-            }
-            out.close();
-            in.close();
-        }catch (Exception e){
-            e.printStackTrace();
+            HttpClientContext context = HttpClientContext.create();
+            org.apache.http.HttpResponse response = httpClient.execute(request,
+                    context);
+            FileUtils.copyInputStreamToFile(response.getEntity().getContent(),
+                    new File(localPath));
+        } catch (Exception e) {
+            Log.error("Download error,  " + e.toString());
+        } finally {
+            request.releaseConnection();
         }
     }
+
 
 
 }

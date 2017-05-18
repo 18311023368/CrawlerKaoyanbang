@@ -20,7 +20,7 @@ public class AllCategory implements HtmlBean{
     @Request
     private HttpRequest request;
     //分类集合
-    @HtmlField(cssPath = "#hotclass > tbody >tr >th")
+    @HtmlField(cssPath = "#hotclass > tbody > tr:nth-child(5) > th:nth-child(5)")
     private List<Category> typeList;
 
     public HttpRequest getRequest() {

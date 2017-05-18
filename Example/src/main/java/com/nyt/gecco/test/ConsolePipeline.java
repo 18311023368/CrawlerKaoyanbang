@@ -1,14 +1,13 @@
 package com.nyt.gecco.test;
 
 import com.alibaba.fastjson.JSON;
-import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
 import com.geccocrawler.gecco.spider.SpiderBean;
 
 /**
  * 向控制台输出内容
  */
-@PipelineName("consolePipeline")
+//@PipelineName("consolePipeline")
 public class ConsolePipeline implements Pipeline<SpiderBean> {
 
     @Override

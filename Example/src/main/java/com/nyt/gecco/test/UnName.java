@@ -1,6 +1,5 @@
 package com.nyt.gecco.test;
 
-import com.geccocrawler.gecco.annotation.Gecco;
 import com.geccocrawler.gecco.annotation.Href;
 import com.geccocrawler.gecco.annotation.HtmlField;
 import com.geccocrawler.gecco.annotation.Text;
@@ -11,20 +10,20 @@ import java.util.List;
 /**
  * Created by nieyutan on 17/5/5.
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","createFile"})
+//@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","createFile"})
 public class UnName implements HtmlBean {
 
 
     private static final long sericalVersionUID=-7127412585200687225L;
 
-
     //文档详细内容
-    @HtmlField(cssPath = "#forum_85 > tbody > tr > th")
+    @HtmlField(cssPath = "#forum_85 > tbody > tr:nth-child(6) > th")
     private List<TypeDetail> typeDetails;
 
     //文档详细内容
-    @HtmlField(cssPath = "#hotclass > tbody > tr > th")
+    @HtmlField(cssPath = "#hotclass > tbody > tr:nth-child(2) > th:nth-child(2)")
     private List<UnNameDetail> docName;
+
 
     public List<TypeDetail>  getTypeDetails() {
         return typeDetails;

@@ -1,6 +1,5 @@
 package com.nyt.gecco.test;
 
-import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
 import org.apache.http.util.TextUtils;
 
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * Created by nieyutan on 17/5/8.
  */
-@PipelineName("createFile")
+//@PipelineName("createFile")
 public class CreateFile implements Pipeline<UnName> {
     public static List<String> filePaths = new ArrayList<String>();
     //需要过滤的集合

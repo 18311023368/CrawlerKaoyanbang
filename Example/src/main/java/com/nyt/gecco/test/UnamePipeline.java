@@ -1,12 +1,11 @@
 package com.nyt.gecco.test;
 
-import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.Pipeline;
 
 /**
  * Created by nieyutan on 17/5/8.
  */
-@PipelineName("unamePipeline")
+//@PipelineName("unamePipeline")
 public class UnamePipeline implements Pipeline<UnName> {
     @Override
     public void process(UnName unName) {

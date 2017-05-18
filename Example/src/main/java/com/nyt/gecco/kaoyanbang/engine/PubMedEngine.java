@@ -20,9 +20,9 @@ public class PubMedEngine {
                 //开始抓取的页面地址
                 .start(start)
                 //开启几个爬虫线程
-                .thread(1)
+                .thread(10)
                 //单个爬虫每次抓取完一个请求后的间隔时间
-                .interval(2000)
+                .interval(50)
                 //循环抓取
                 .loop(false)
                 //使用pc端userAgent

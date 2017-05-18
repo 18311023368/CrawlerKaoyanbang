@@ -8,7 +8,7 @@ import com.geccocrawler.gecco.spider.HtmlBean;
 /**
  * Created by nieyutan on 17/5/4.
  */
-//@Gecco(matchUrl = "http://download.kaoyan.com/{listname}", pipelines = { "downloadPipeline"})
+//@Gecco(matchUrl = "http://download.kaoyan.com/{listname}.html", pipelines = { "consolePipeline",""})
 
 public class Downinfo implements HtmlBean{
 
@@ -29,7 +29,7 @@ public class Downinfo implements HtmlBean{
                 //工程的包路径@Attr
                 .classpath("com.nyt.gecco.test")
                 //开始抓取的页面地址
-                .start("http://download.kaoyan.com/kaoyan_xiazai_65804.html")
+                .start("http://download.kaoyan.com/kaoyan_xiazai_69433.html")
                 //开启几个爬虫线程
                 .thread(1)
                 //单个爬虫每次抓取完一个请求后的间隔时间
