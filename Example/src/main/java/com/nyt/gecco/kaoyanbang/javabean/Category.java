@@ -19,7 +19,7 @@ public class Category implements HtmlBean{
 
      * 链接地址
      */
-    @Href(click = true)
+    @Href
     @HtmlField(cssPath = " h2 > a")
     private String unNameUrl;
 

@@ -1,13 +1,13 @@
 package com.nyt.gecco.kaoyanbang.exec;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 
@@ -34,12 +34,12 @@ public class DownloadAction extends Action {
     public DownloadAction(ActionQueue queue, String url, String localPath) {
         super(queue);
         this.url = url;
-        this.localPath = localPath + System.currentTimeMillis() + ".jpg";
+        this.localPath = localPath ;
     }
 
     @Override
     protected void execute() {
-        HttpRequestBase request = new HttpGet(url);
+        HttpRequestBase request = new HttpPost(url);
         try {
             HttpClientContext context = HttpClientContext.create();
             org.apache.http.HttpResponse response = httpClient.execute(request,

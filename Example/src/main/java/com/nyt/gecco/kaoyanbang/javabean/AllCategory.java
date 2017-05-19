@@ -12,7 +12,7 @@ import java.util.List;
  * Created by nieyutan on 17/4/28.
  * 考研帮所有的分类
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={"consolePipeline"})
+@Gecco(matchUrl = "http://download.kaoyan.com/" ,pipelines={"consolePipeline","allSortPipeline"})
 public class AllCategory implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;

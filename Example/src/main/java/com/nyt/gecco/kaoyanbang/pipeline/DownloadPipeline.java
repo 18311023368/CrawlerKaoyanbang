@@ -48,6 +48,9 @@ public class DownloadPipeline implements Pipeline<DownloadInfo> {
             String substring =  CreateFile.filePaths.get(i).substring(d+1,  CreateFile.filePaths.get(i).length());
 //            System.out.println(docName+"----"+substring);
             if(docName.contains(substring)){
+                System.out.println( CreateFile.filePaths.get(i));
+                System.out.println( substring);
+                System.out.println( docName);
 
                 localPath =  CreateFile.filePaths.get(i)+"/" + docName;
                 HttpRequestBase request = new HttpGet(bean.getDocLastUrl());
@@ -60,6 +63,7 @@ public class DownloadPipeline implements Pipeline<DownloadInfo> {
                 } finally {
                     request.releaseConnection();
                 }
+                break;
             }
         }
 

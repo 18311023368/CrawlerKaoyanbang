@@ -10,7 +10,7 @@ import java.util.List;
  * Created by nieyutan on 17/4/28.
  * 每个分类下子分类,如果是省市的话还会有下级列表DocListSon,如果 是科目的直接就是文档列表
  */
-@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","","createFile"})
+@Gecco(matchUrl = "http://download.kaoyan.com/{listName}" ,pipelines = { "consolePipeline","createFile","secondSortPipeline","fourSortPipeline","thirdSortPipeline"})
 public class DocList implements HtmlBean{
 
     private static final long sericalVersionUID=-7127412585200687225L;
@@ -107,10 +107,10 @@ public class DocList implements HtmlBean{
     private String fileFirstPath;
 
 
-    //二级目录  北京大学
-    @Text
-    @HtmlField(cssPath = "#infosidemain > div > h3")
-    private String fileSecondPath;
+//    //二级目录  北京大学
+//    @Text
+//    @HtmlField(cssPath = "#infosidemain > div > h3")
+//    private String fileSecondPath;
 
     public String getFileFirstPath() {
         return fileFirstPath;
@@ -120,17 +120,17 @@ public class DocList implements HtmlBean{
         this.fileFirstPath = fileFirstPath;
     }
 
-    public String getFileSecondPath() {
-        return fileSecondPath;
-    }
-
-    public void setFileSecondPath(String fileSecondPath) {
-        this.fileSecondPath = fileSecondPath;
-    }
+//    public String getFileSecondPath() {
+//        return fileSecondPath;
+//    }
+//
+//    public void setFileSecondPath(String fileSecondPath) {
+//        this.fileSecondPath = fileSecondPath;
+//    }
 
     //
     //文档地址
-    @Href(click = true)
+    @Href
     @HtmlField(cssPath = "td > div.postmessage.defaultpost > div.box.postattachlist > dl > dt > a")
     private String docTwoUrl;
     //文档名称

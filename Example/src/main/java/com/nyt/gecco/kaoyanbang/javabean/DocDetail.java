@@ -34,7 +34,7 @@ public class DocDetail implements HtmlBean{
     /**
      * 文档地址
      */
-    @Href(click =  true)
+    @Href
     @HtmlField(cssPath =" span > a" )
     private String docNameUrl;
 

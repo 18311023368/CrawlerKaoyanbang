@@ -36,7 +36,7 @@ public class UnversityDetail implements HtmlBean{
     /**
      * 地址
      */
-    @Href(click = true)
+    @Href
     @HtmlField(cssPath =" h2 > a" )
     private String  docUrl;
     /**
